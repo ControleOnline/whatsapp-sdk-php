@@ -2,8 +2,8 @@
 
 namespace ControleOnline\WhatsApp;
 
-use ControleOnline\WhatsApp\Messages\WhatsAppMedia;
-use ControleOnline\WhatsApp\Messages\WhatsAppMessage;
+use ControleOnline\WhatsApp\Messages\WhatsAppMediaInterface;
+use ControleOnline\WhatsApp\Messages\WhatsAppMessageInterface;
 use GuzzleHttp\Client;
 
 class WhatsAppClient
@@ -20,7 +20,7 @@ class WhatsAppClient
             ]);
     }
 
-    public function sendMessage(WhatsAppMessage $message)
+    public function sendMessage(WhatsAppMessageInterface $message)
     {
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
@@ -33,7 +33,7 @@ class WhatsAppClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function sendMedia(WhatsAppMedia $message)
+    public function sendMedia(WhatsAppMediaInterface $message)
     {
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/media", [

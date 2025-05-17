@@ -2,7 +2,7 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-class WhatsAppMedia implements WhatsAppMessageInterface, WhatsAppMediaInterface
+class WhatsAppMedia implements  WhatsAppMediaInterface
 {
     private int $origin_number;
     private int $destination_number;

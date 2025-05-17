@@ -2,7 +2,7 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-interface WhatsAppMediaInterface
+interface WhatsAppMediaInterface extends WhatsAppMessageInterface
 {
     public function getFileContent(): string;
 }
