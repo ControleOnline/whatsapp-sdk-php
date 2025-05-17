@@ -9,6 +9,11 @@ class WhatsAppMessage implements WhatsAppMessageInterface
     private string $message;
 
 
+    public function validate(): self
+    {
+        return $this;
+    }
+
     public function getOriginNumber(): int
     {
         return $this->origin_number;

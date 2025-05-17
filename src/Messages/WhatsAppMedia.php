@@ -9,6 +9,14 @@ class WhatsAppMedia implements WhatsAppMessageInterface, WhatsAppMediaInterface
     private string $message;
     private string $file_content;
 
+
+
+    public function validate(): self
+    {
+        return $this;
+    }
+
+
     public function getOriginNumber(): int
     {
         return $this->origin_number;

@@ -9,10 +9,8 @@ use GuzzleHttp\Client;
 class WhatsAppClient
 {
     private static $client;
-    public function __construct(
-        $baseUrl,
-        $apiKey
-    ) {
+    public function __construct($baseUrl, $apiKey)
+    {
         if (! self::$client)
             self::$client = new Client([
                 'base_uri' => $baseUrl,
@@ -24,7 +22,7 @@ class WhatsAppClient
 
     public function sendMessage(WhatsAppMessage $message)
     {
-
+        $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
             'json' => [
                 'number' => $message->getDestinationNumber(),
@@ -37,7 +35,7 @@ class WhatsAppClient
 
     public function sendMedia(WhatsAppMedia $message)
     {
-
+        $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/media", [
             'multipart' => [
                 'number' => $message->getDestinationNumber(),

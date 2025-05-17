@@ -10,4 +10,5 @@ interface WhatsAppMessageInterface
     public function setOriginNumber(int $origin_number): self;
     public function setDestinationNumber(int $destination_number): self;
     public function setMessage(string $messge): self;
+    public function validate(): self;
 }
