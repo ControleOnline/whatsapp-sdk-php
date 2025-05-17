@@ -26,7 +26,7 @@ class WhatsAppClient
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
             'json' => [
-                'number' => $message->getDestinationNumber(),
+                'number' => (string) $message->getDestinationNumber(),
                 'message' => $message->getMessageContent()->getBody()
             ],
         ]);
@@ -39,7 +39,7 @@ class WhatsAppClient
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/media", [
             'multipart' => [
-                'number' => $message->getDestinationNumber(),
+                'number' => (string) $message->getDestinationNumber(),
                 'message' => $message->getMessageContent()->getBody(),
                 'file' => $message->getMessageContent()->getMedia()->getData()
             ],
