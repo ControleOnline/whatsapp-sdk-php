@@ -5,6 +5,7 @@ namespace ControleOnline\WhatsApp;
 use ControleOnline\WhatsApp\Messages\WhatsAppContent;
 use ControleOnline\WhatsApp\Messages\WhatsAppMedia;
 use ControleOnline\WhatsApp\Messages\WhatsAppMessage;
+use ControleOnline\WhatsApp\Session\WhatsappSession;
 use GuzzleHttp\Client;
 
 class WhatsAppClient
@@ -48,7 +49,7 @@ class WhatsAppClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function getQrCode(string $destination_number): WhatsappSession
+    public function getQrCode(string $destination_number)
     {
 
     }
