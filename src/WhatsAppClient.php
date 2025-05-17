@@ -2,8 +2,9 @@
 
 namespace ControleOnline\WhatsApp;
 
-use ControleOnline\WhatsApp\Messages\WhatsAppMediaInterface;
-use ControleOnline\WhatsApp\Messages\WhatsAppMessageInterface;
+use ControleOnline\WhatsApp\Messages\WhatsAppContent;
+use ControleOnline\WhatsApp\Messages\WhatsAppMedia;
+use ControleOnline\WhatsApp\Messages\WhatsAppMessage;
 use GuzzleHttp\Client;
 
 class WhatsAppClient
@@ -20,30 +21,63 @@ class WhatsAppClient
             ]);
     }
 
-    public function sendMessage(WhatsAppMessageInterface $message)
+    public function sendMessage(WhatsAppMessage $message)
     {
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
             'json' => [
                 'number' => $message->getDestinationNumber(),
-                'message' => $message->getMessage()
+                'message' => $message->getMessageContent()->getBody()
             ],
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function sendMedia(WhatsAppMediaInterface $message)
+    public function sendMedia(WhatsAppMessage $message)
     {
         $message->validate();
         $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/media", [
             'multipart' => [
                 'number' => $message->getDestinationNumber(),
-                'caption' => $message->getMessage(),
-                'file' => $message->getFileContent()
+                'message' => $message->getMessageContent()->getBody(),
+                'file' => $message->getMessageContent()->getMedia()->getData()
             ],
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
+    }
+
+    public function getUnreadMessages(int $destination_number): array
+    {
+        $response = self::$client->get("/messages/" . $destination_number . "/unread");
+        $data = json_decode($response->getBody()->getContents(), true);
+
+        $messages = [];
+        foreach ($data as $item) {
+            $media = null;
+            if (isset($item['content']['file']))
+                $media = (new WhatsAppMedia())
+                    ->setType($item['content']['file']['type'])
+                    ->setData($item['content']['file']['data']);
+
+
+            $content = new WhatsAppContent();
+            $content->setMediaType($item['content']['mediaType'])
+                ->setBody($item['content']['body'] ?? '');
+
+            if ($media)
+                $content->setMedia($media);
+
+            $message = new WhatsAppMessage();
+            $message->setMessageId($item['messageid'])
+                ->setOriginNumber((int) $item['remoteJid'])
+                ->setDestinationNumber($destination_number)
+                ->setMessageContent($content);
+
+            $messages[] = $message;
+        }
+
+        return $messages;
     }
 }

@@ -2,72 +2,38 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-class WhatsAppMedia implements  WhatsAppMediaInterface
+class WhatsAppMedia
 {
-    private int $origin_number;
-    private int $destination_number;
-    private string $message;
-    private string $file_content;
+
+    private string $type;
+    private array $data;
 
 
-
-    public function validate(): self
+    public function getType(): string
     {
-        return $this;
+        return $this->type;
     }
 
 
-    public function getOriginNumber(): int
+    private function setType(string $type): self
     {
-        return $this->origin_number;
-    }
-
-
-    public function setOriginNumber(int $origin_number): self
-    {
-        $this->origin_number = $origin_number;
+        $this->type = $type;
 
         return $this;
     }
 
 
-    public function getDestinationNumber(): int
+    public function getData(): array
     {
-        return $this->destination_number;
+        return $this->data;
     }
 
 
-    public function setDestinationNumber(int $destination_number): self
+    public function setData(array $data): self
     {
-        $this->destination_number = $destination_number;
+        $this->data = $data;
 
-        return $this;
-    }
-
-
-    public function getMessage(): string
-    {
-        return $this->message;
-    }
-
-
-    public function setMessage(string $message): self
-    {
-        $this->message = $message;
-
-        return $this;
-    }
-
-
-    public function getFileContent(): string
-    {
-        return $this->file_content;
-    }
-
-
-    public function setFileContent(string $file_content): self
-    {
-        $this->file_content = $file_content;
+        $this->setType(''); // @todo Detectar
 
         return $this;
     }

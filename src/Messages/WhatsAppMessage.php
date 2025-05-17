@@ -2,11 +2,12 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-class WhatsAppMessage implements WhatsAppMessageInterface
+class WhatsAppMessage
 {
     private int $origin_number;
     private int $destination_number;
-    private string $message;
+    private string $message_id;
+    private WhatsAppContent $message_content;
 
 
     public function validate(): self
@@ -41,16 +42,26 @@ class WhatsAppMessage implements WhatsAppMessageInterface
         return $this;
     }
 
-
-    public function getMessage(): string
+    public function getMessageId(): string
     {
-        return $this->message;
+        return $this->message_id;
     }
 
-
-    public function setMessage(string $message): self
+    public function setMessageId(string $message_id): self
     {
-        $this->message = $message;
+        $this->message_id = $message_id;
+
+        return $this;
+    }
+
+    public function getMessageContent(): WhatsAppContent
+    {
+        return $this->message_content;
+    }
+
+    public function setMessageContent(WhatsAppContent $message_content): self
+    {
+        $this->message_content = $message_content;
 
         return $this;
     }
