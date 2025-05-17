@@ -58,13 +58,11 @@ class WhatsAppClient
             $media = null;
             if (isset($item['content']['file']))
                 $media = (new WhatsAppMedia())
-                    ->setType($item['content']['file']['type'])
                     ->setData($item['content']['file']['data']);
 
 
             $content = new WhatsAppContent();
-            $content->setMediaType($item['content']['mediaType'])
-                ->setBody($item['content']['body'] ?? '');
+            $content->setBody($item['content']['body'] ?? '');
 
             if ($media)
                 $content->setMedia($media);
