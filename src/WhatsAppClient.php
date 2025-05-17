@@ -48,7 +48,12 @@ class WhatsAppClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function getUnreadMessages(int $destination_number): array
+    public function getQrCode(string $destination_number): WhatsappSession
+    {
+
+    }
+
+    public function getUnreadMessages(string $destination_number): array
     {
         $response = self::$client->get("/messages/" . $destination_number . "/unread");
         $data = json_decode($response->getBody()->getContents(), true);
