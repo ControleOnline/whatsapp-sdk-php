@@ -5,7 +5,7 @@ namespace ControleOnline\WhatsApp\Messages;
 class WhatsAppMessage
 {
     private int $origin_number;
-    private int $destination_number;
+    private string $destination_number;
     private string $message_id;
     private WhatsAppContent $message_content;
 
@@ -29,13 +29,13 @@ class WhatsAppMessage
     }
 
 
-    public function getDestinationNumber(): int
+    public function getDestinationNumber(): string
     {
         return $this->destination_number;
     }
 
 
-    public function setDestinationNumber(int $destination_number): self
+    public function setDestinationNumber(string $destination_number): self
     {
         $this->destination_number = $destination_number;
 
