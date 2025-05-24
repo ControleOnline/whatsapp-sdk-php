@@ -4,16 +4,16 @@ namespace ControleOnline\WhatsApp\Profile;
 
 class WhatsAppProfile
 {
-    private int $phone_number;
+    private string $phone_number;
     private string $photo;
 
 
-    public function getPhoneNumber(): int
+    public function getPhoneNumber(): string
     {
         return $this->phone_number;
     }
 
-    public function setPhoneNumber(int $phone_number): self
+    public function setPhoneNumber(string $phone_number): self
     {
         $this->phone_number = $phone_number;
 
