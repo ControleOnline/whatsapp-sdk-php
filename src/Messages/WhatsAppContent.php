@@ -4,12 +4,15 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-class WhatsAppContent
+use ControleOnline\Messages\ContentInterface;
+use ControleOnline\Messages\MediaInterface;
+
+class WhatsAppContent implements ContentInterface
 {
 
     private string $mediaType;
     private string $body;
-    private WhatsAppMedia $media;
+    private MediaInterface $media;
 
 
     public function getMediaType(): string
@@ -18,7 +21,7 @@ class WhatsAppContent
     }
 
 
-    private function setMediaType(string $mediaType): self
+    public function setMediaType(string $mediaType): self
     {
         $this->mediaType = $mediaType;
 
@@ -40,13 +43,13 @@ class WhatsAppContent
         return $this;
     }
 
-    public function getMedia(): WhatsAppMedia
+    public function getMedia(): MediaInterface
     {
         return $this->media;
     }
 
 
-    public function setMedia(WhatsAppMedia $media): self
+    public function setMedia(MediaInterface $media): self
     {
         $this->media = $media;
 

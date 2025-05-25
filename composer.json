@@ -1,25 +1,26 @@
 {
-    "name": "controleonline/whatsapp-sdk",
-    "description": "SDK em to integrate a WhatsApp API",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Controle Online",
-            "email": "ti@controleonline.com"
-        }
-    ],
-    "require": {
-        "php": "^7.4 || ^8.0",
-        "guzzlehttp/guzzle": "^7.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "ControleOnline\\WhatsApp\\": "src/"
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "controleonline/whatsapp-sdk",
+  "description": "SDK em to integrate a WhatsApp API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Controle Online",
+      "email": "ti@controleonline.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "controleonline/messages-sdk": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "ControleOnline\\WhatsApp\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
 }

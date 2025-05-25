@@ -2,7 +2,9 @@
 
 namespace ControleOnline\WhatsApp\Messages;
 
-class WhatsAppMedia
+use ControleOnline\Messages\MediaInterface;
+
+class WhatsAppMedia implements MediaInterface
 {
 
     private string $type;
@@ -15,7 +17,7 @@ class WhatsAppMedia
     }
 
 
-    private function setType(string $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 
