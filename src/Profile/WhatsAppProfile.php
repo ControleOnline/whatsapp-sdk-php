@@ -2,7 +2,9 @@
 
 namespace ControleOnline\WhatsApp\Profile;
 
-class WhatsAppProfile
+use ControleOnline\Messages\ProfileInterface;
+
+class WhatsAppProfile implements ProfileInterface
 {
     private string $phone_number;
     private string $photo;
