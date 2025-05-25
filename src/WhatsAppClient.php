@@ -6,7 +6,6 @@ use ControleOnline\WhatsApp\Messages\WhatsAppContent;
 use ControleOnline\WhatsApp\Messages\WhatsAppMedia;
 use ControleOnline\WhatsApp\Messages\WhatsAppMessage;
 use ControleOnline\WhatsApp\Profile\WhatsAppProfile;
-use ControleOnline\WhatsApp\Session\WhatsappSession;
 use GuzzleHttp\Client;
 
 class WhatsAppClient
@@ -23,18 +22,6 @@ class WhatsAppClient
             ]);
     }
 
-    public function sendMessage(WhatsAppMessage $message)
-    {
-        $message->validate();
-        $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
-            'json' => [
-                'number' =>  $message->getDestinationNumber(),
-                'message' => $message->getMessageContent()->getBody()
-            ],
-        ]);
-
-        return json_decode($response->getBody()->getContents(), true);
-    }
 
     public function createSession(WhatsAppProfile $whatsAppProfile)
     {
@@ -60,7 +47,18 @@ class WhatsAppClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function getQrCode(string $destination_number) {}
+    public function sendMessage(WhatsAppMessage $message)
+    {
+        $message->validate();
+        $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
+            'json' => [
+                'number' =>  $message->getDestinationNumber(),
+                'message' => $message->getMessageContent()->getBody()
+            ],
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
 
     public function getUnreadMessages(string $destination_number): array
     {
