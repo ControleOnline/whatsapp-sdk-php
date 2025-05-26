@@ -3,9 +3,9 @@
 namespace ControleOnline\WhatsApp\Messages;
 
 use ControleOnline\Messages\ContentInterface;
-use ControleOnline\Messages\MessagesInterface;
+use ControleOnline\Messages\MessageInterface;
 
-class WhatsAppMessage implements MessagesInterface
+class WhatsAppMessage implements MessageInterface
 {
     private int $origin_number;
     private string $destination_number;
