@@ -16,6 +16,9 @@ class WhatsAppMessage implements MessageInterface
 
     public function validate(): self
     {
+        /**
+         * @todo Implement a validation
+         */
         return $this;
     }
 
