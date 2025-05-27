@@ -10,6 +10,7 @@ class WhatsAppMessage implements MessageInterface
     private int $origin_number;
     private string $destination_number;
     private string $message_id;
+    private string $action;
     private WhatsAppContent $message_content;
 
 
@@ -65,6 +66,18 @@ class WhatsAppMessage implements MessageInterface
     public function setMessageContent(ContentInterface $message_content): self
     {
         $this->message_content = $message_content;
+
+        return $this;
+    }
+
+    public function getAction(): string
+    {
+        return $this->action;
+    }
+
+    public function setAction(string $action): self
+    {
+        $this->action = $action;
 
         return $this;
     }
