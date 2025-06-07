@@ -12,7 +12,7 @@ class WhatsAppContent implements ContentInterface
 
     private string $mediaType;
     private string $body;
-    private MediaInterface $media;
+    private ?MediaInterface $media = null;
 
 
     public function getMediaType(): string
