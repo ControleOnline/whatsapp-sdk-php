@@ -43,7 +43,7 @@ class WhatsAppContent implements ContentInterface
         return $this;
     }
 
-    public function getMedia(): MediaInterface
+    public function getMedia(): ?MediaInterface
     {
         return $this->media;
     }
