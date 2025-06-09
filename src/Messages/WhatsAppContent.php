@@ -6,6 +6,7 @@ namespace ControleOnline\WhatsApp\Messages;
 
 use ControleOnline\Messages\ContentInterface;
 use ControleOnline\Messages\MediaInterface;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class WhatsAppContent implements ContentInterface
 {
@@ -36,7 +37,11 @@ class WhatsAppContent implements ContentInterface
 
     public function setBody(string $body): self
     {
-        $this->body = $body;
+
+        $converter = new HtmlConverter();
+
+        $this->body = $converter->convert($body);
+
 
         $this->setMediaType('audio'); // @todo Detectar
 
