@@ -38,10 +38,10 @@ class WhatsAppContent implements ContentInterface
     public function setBody(string $body): self
     {
 
-        $converter = new HtmlConverter();
+        //        $converter = new HtmlConverter();
 
-        $this->body = $converter->convert($body);
-
+        //        $this->body = $converter->convert($body);
+        $this->body = $body;
 
         $this->setMediaType('audio'); // @todo Detectar
 
