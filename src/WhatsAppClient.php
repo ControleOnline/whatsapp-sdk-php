@@ -33,24 +33,41 @@ class WhatsAppClient
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function sendMedia(WhatsAppMessage $message)
+    public function send(WhatsAppMessage $message): array
     {
         $message->validate();
-        $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/media", [
+
+        if ($message->getMessageContent()->getMedia()) {
+            return $this->sendMedia($message);
+        }
+
+        return $this->sendMessage($message);
+    }
+
+    private function sendMedia(WhatsAppMessage $message)
+    {
+        $mediaData = $message->getMessageContent()->getMedia()->getData();
+
+        $response = self::$client->post("/messages/" . $message->getOriginNumber(), [
             'multipart' => [
-                'number' => $message->getDestinationNumber(),
-                'message' => $message->getMessageContent()->getBody(),
-                'file' => $message->getMessageContent()->getMedia()->getData()
+                [
+                    'name' => 'number',
+                    'contents' => $message->getDestinationNumber()
+                ],
+                [
+                    'name' => 'message',
+                    'contents' => $message->getMessageContent()->getBody()
+                ],
+                $mediaData
             ],
         ]);
 
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function sendMessage(WhatsAppMessage $message)
+    private function sendMessage(WhatsAppMessage $message)
     {
-        $message->validate();
-        $response = self::$client->post("/messages/" . $message->getOriginNumber() . "/text", [
+        $response = self::$client->post("/messages/" . $message->getOriginNumber(), [
             'json' => [
                 'number' =>  $message->getDestinationNumber(),
                 'message' => $message->getMessageContent()->getBody()
