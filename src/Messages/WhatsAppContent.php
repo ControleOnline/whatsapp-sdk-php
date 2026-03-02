@@ -22,7 +22,7 @@ class WhatsAppContent implements ContentInterface
     }
 
 
-    public function setMediaType(string $mediaType): self
+    public function setMediaType(string $mediaType): static
     {
         $this->mediaType = $mediaType;
 
@@ -35,7 +35,7 @@ class WhatsAppContent implements ContentInterface
     }
 
 
-    public function setBody(string $body): self
+    public function setBody(string $body): static
     {
 
         //        $converter = new HtmlConverter();
@@ -54,7 +54,7 @@ class WhatsAppContent implements ContentInterface
     }
 
 
-    public function setMedia(MediaInterface $media): self
+    public function setMedia(MediaInterface $media): static
     {
         $this->media = $media;
 

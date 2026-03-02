@@ -14,7 +14,7 @@ class WhatsAppMessage implements MessageInterface
     private WhatsAppContent $message_content;
 
 
-    public function validate(): self
+    public function validate(): static
     {
         /**
          * @todo Implement a validation
@@ -28,7 +28,7 @@ class WhatsAppMessage implements MessageInterface
     }
 
 
-    public function setOriginNumber(string $origin_number): self
+    public function setOriginNumber(string $origin_number): static
     {
         $this->origin_number = $origin_number;
 
@@ -42,7 +42,7 @@ class WhatsAppMessage implements MessageInterface
     }
 
 
-    public function setDestinationNumber(string $destination_number): self
+    public function setDestinationNumber(string $destination_number): static
     {
         $this->destination_number = $destination_number;
 
@@ -54,7 +54,7 @@ class WhatsAppMessage implements MessageInterface
         return $this->message_id;
     }
 
-    public function setMessageId(string $message_id): self
+    public function setMessageId(string $message_id): static
     {
         $this->message_id = $message_id;
 
@@ -66,7 +66,7 @@ class WhatsAppMessage implements MessageInterface
         return $this->message_content;
     }
 
-    public function setMessageContent(ContentInterface $message_content): self
+    public function setMessageContent(ContentInterface $message_content): static
     {
         $this->message_content = $message_content;
 
@@ -78,7 +78,7 @@ class WhatsAppMessage implements MessageInterface
         return $this->action;
     }
 
-    public function setAction(string $action): self
+    public function setAction(string $action): static
     {
         $this->action = $action;
 

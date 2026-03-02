@@ -18,7 +18,7 @@ class WhatsAppMedia implements MediaInterface
     }
 
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -32,7 +32,7 @@ class WhatsAppMedia implements MediaInterface
     }
 
 
-    public function setData(array $data): self
+    public function setData(array $data): static
     {
         $this->data = $data;
 
@@ -41,7 +41,7 @@ class WhatsAppMedia implements MediaInterface
         return $this;
     }
 
-    public function fromFile(string $path): self
+    public function fromFile(string $path): static
     {
         if (!file_exists($path)) {
             throw new \Exception("Arquivo não encontrado: {$path}");
@@ -58,7 +58,7 @@ class WhatsAppMedia implements MediaInterface
         return $this;
     }
 
-    public function fromUrl(string $url): self
+    public function fromUrl(string $url): static
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new \Exception("URL inválida: {$url}");
