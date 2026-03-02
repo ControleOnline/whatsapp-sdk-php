@@ -15,7 +15,7 @@ class WhatsAppProfile implements ProfileInterface
         return $this->phone_number;
     }
 
-    public function setPhoneNumber(string $phone_number): self
+    public function setPhoneNumber(string $phone_number): static
     {
         $this->phone_number = $phone_number;
 
@@ -27,7 +27,7 @@ class WhatsAppProfile implements ProfileInterface
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(string $photo): static
     {
         $this->photo = $photo;
 
