@@ -12,6 +12,7 @@ class WhatsAppMessage implements MessageInterface
     private string $message_id;
     private string $action;
     private WhatsAppContent $message_content;
+    private ?string $transcribe = null;
 
 
     public function validate(): static
@@ -81,6 +82,18 @@ class WhatsAppMessage implements MessageInterface
     public function setAction(string $action): static
     {
         $this->action = $action;
+
+        return $this;
+    }
+
+    public function getTranscribe(): ?string
+    {
+        return $this->transcribe;
+    }
+
+    public function setTranscribe(?string $transcribe): static
+    {
+        $this->transcribe = $transcribe;
 
         return $this;
     }
