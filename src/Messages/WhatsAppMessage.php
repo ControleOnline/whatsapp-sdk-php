@@ -7,7 +7,7 @@ use ControleOnline\Messages\MessageInterface;
 
 class WhatsAppMessage implements MessageInterface
 {
-    private int $origin_number;
+    private string $origin_number;
     private string $destination_number;
     private string $message_id;
     private string $action;
