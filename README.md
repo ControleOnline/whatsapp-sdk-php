@@ -13,3 +13,9 @@
 <a href="https://github.com/ControleOnline/whatsapp-sdk-php/graphs/contributors" target="_blank">
   <img src="https://contrib.rocks/image?repo=ControleOnline/whatsapp-sdk-php" />
 </a>
+
+## Links obrigatorios
+
+- [Documentacao para clientes](http://ajuda.controleonline.com/)
+- [Site institucional](http://controleonline.com/)
+- [Wiki tecnica](https://github.com/ControleOnline/whatsapp-sdk-php/wiki)
