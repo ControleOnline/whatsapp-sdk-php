@@ -1,0 +1,13 @@
+{
+  "branch": "rc/1.10.89-rc.1",
+  "version": "1.10.89",
+  "rc": 1,
+  "frozen": true,
+  "baseMaster": "b3c18ac1b0d3bae445732bf6018237df970b5c55",
+  "tasks": [
+    1221
+  ],
+  "repositories": {
+    "ControleOnline/whatsapp-sdk-php": "9a4f249ed8323968dbec96f075a60e393e94ed4c"
+  }
+}
