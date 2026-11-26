@@ -1,13 +1,20 @@
 {
-  "branch": "rc/1.10.89-rc.1",
-  "version": "1.10.89",
+  "version": "1.0.2",
   "rc": 1,
-  "frozen": true,
-  "baseMaster": "b3c18ac1b0d3bae445732bf6018237df970b5c55",
+  "branch": "rc/1.0.2-rc.1",
+  "baseMaster": "b3259c76d94036e60e6177e257fdb7f5516e1acb",
+  "baseTag": "v1.0.1",
   "tasks": [
-    1221
+    1761
   ],
+  "taskRepository": "ControleOnline/app-community",
+  "frozen": true,
   "repositories": {
-    "ControleOnline/whatsapp-sdk-php": "9a4f249ed8323968dbec96f075a60e393e94ed4c"
+    "ControleOnline/whatsapp-sdk-php": "323c47d8033ec0864bbfc99f0d04139fb238066f"
+  },
+  "sources": {
+    "versão de produção v1.0.1": "e393e1a2586c50d132faa0ee45beb6a1023707bd",
+    "staging": "2d756505e3d826c94c7550b3d283a0267c86da6f",
+    "dev": "e393e1a2586c50d132faa0ee45beb6a1023707bd"
   }
 }
